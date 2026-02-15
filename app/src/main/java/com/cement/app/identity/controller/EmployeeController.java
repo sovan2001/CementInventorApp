@@ -16,6 +16,14 @@ public class EmployeeController {
     private final EmployeeService employeeService;
 
     // =============================
+    // GET NEXT EMPLOYEE CODE
+    // =============================
+    @GetMapping("/next-code")
+    public String getNextEmployeeCode() {
+        return employeeService.getNextEmployeeCode();
+    }
+
+    // =============================
     // CREATE EMPLOYEE
     // =============================
     @PostMapping
@@ -23,27 +31,27 @@ public class EmployeeController {
         return employeeService.createEmployee(request);
     }
 
-    // =============================
-    // ASSIGN ROLE
-    // =============================
-    @PostMapping("/{employeeId}/roles")
-    public String assignRole(
-            @PathVariable Long employeeId,
-            @RequestBody AssignRoleRequest request) {
-
-        employeeService.assignRole(employeeId, request);
-        return "Role assigned successfully";
-    }
-
-    // =============================
-    // ASSIGN BRANCH
-    // =============================
-    @PostMapping("/{employeeId}/branches")
-    public String assignBranch(
-            @PathVariable Long employeeId,
-            @RequestBody AssignBranchRequest request) {
-
-        employeeService.assignBranch(employeeId, request);
-        return "Branch assigned successfully";
-    }
+	//    // =============================
+	//    // ASSIGN ROLE
+	//    // =============================
+	//    @PostMapping("/{employeeId}/roles")
+	//    public String assignRole(
+	//            @PathVariable Long employeeId,
+	//            @RequestBody AssignRoleRequest request) {
+	//
+	//        employeeService.assignRole(employeeId, request);
+	//        return "Role assigned successfully";
+	//    }
+	//
+	//    // =============================
+	//    // ASSIGN BRANCH
+	//    // =============================
+	//    @PostMapping("/{employeeId}/branches")
+	//    public String assignBranch(
+	//            @PathVariable Long employeeId,
+	//            @RequestBody AssignBranchRequest request) {
+	//
+	//        employeeService.assignBranch(employeeId, request);
+	//        return "Branch assigned successfully";
+	//    }
 }

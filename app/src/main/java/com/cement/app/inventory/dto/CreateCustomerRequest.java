@@ -9,6 +9,6 @@ public class CreateCustomerRequest {
 
     private String customerName;
     private String phone;
+    private String address;
     private BigDecimal creditLimit;
-
 }

@@ -28,4 +28,17 @@ public class CustomerController {
     public List<Customer> getAllCustomers() {
         return customerService.getAllCustomers();
     }
+
+    // Search Customers by Name or Phone
+    @GetMapping("/search")
+    public List<Customer> searchCustomers(@RequestParam String term) {
+        return customerService.searchCustomers(term);
+    }
+
+    // Delete Customer (Soft Delete)
+    @DeleteMapping("/{id}")
+    public String deleteCustomer(@PathVariable Long id) {
+        customerService.deleteCustomer(id);
+        return "Customer deleted successfully";
+    }
 }

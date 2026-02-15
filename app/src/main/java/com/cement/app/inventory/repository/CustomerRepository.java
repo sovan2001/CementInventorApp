@@ -9,4 +9,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
     List<Customer> findByEnterpriseId(Long enterpriseId);
 
+    List<Customer> findByEnterpriseIdAndCustomerNameContainingIgnoreCaseOrPhoneContaining(
+        Long enterpriseId, String customerName, String phone
+    );
 }

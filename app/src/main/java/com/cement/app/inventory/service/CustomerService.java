@@ -27,8 +27,8 @@ public class CustomerService {
         Customer customer = new Customer();
         customer.setCustomerName(request.getCustomerName());
         customer.setPhone(request.getPhone());
+        customer.setAddress(request.getAddress());
         customer.setCreditLimit(request.getCreditLimit());
-
         customer.setEnterpriseId(getCurrentTenant());
 
         return customerRepository.save(customer);
@@ -37,5 +37,19 @@ public class CustomerService {
     public List<Customer> getAllCustomers() {
         return customerRepository.findByEnterpriseId(getCurrentTenant());
     }
-}
 
+    public List<Customer> searchCustomers(String searchTerm) {
+        Long enterpriseId = getCurrentTenant();
+        return customerRepository.findByEnterpriseIdAndCustomerNameContainingIgnoreCaseOrPhoneContaining(
+            enterpriseId, searchTerm, searchTerm
+        );
+    }
+
+    public void deleteCustomer(Long id) {
+        Customer customer = customerRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Customer not found"));
+        
+        customer.setStatus("INACTIVE");
+        customerRepository.save(customer);
+    }
+}

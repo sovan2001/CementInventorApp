@@ -3,9 +3,7 @@ package com.cement.app.identity.dto;
 import lombok.Data;
 
 @Data
-public class CreateEmployeeRequest {
-
-    private String name;
+public class LoginRequest {
     private String username;
     private String password;
 }

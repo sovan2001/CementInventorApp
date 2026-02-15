@@ -19,7 +19,6 @@ import lombok.Setter;
 @Setter
 public class Customer extends BaseEntity {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,6 +28,9 @@ public class Customer extends BaseEntity {
 
     @Column(name = "phone")
     private String phone;
+
+    @Column(name = "address", columnDefinition = "TEXT")
+    private String address;
 
     @Column(name = "credit_limit")
     private BigDecimal creditLimit;
